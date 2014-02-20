@@ -14,7 +14,7 @@ module RSSCache
     def fetch
       begin
         @content = open(url, request_headers) do |f|
-          parse_headers(f)
+          parse_headers f
           f.read
         end
       rescue OpenURI::HTTPError => e
