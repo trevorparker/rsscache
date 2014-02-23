@@ -24,4 +24,12 @@ describe(RSSCache::Feed) do
   it %q{can provide an Atom feed's link} do
     expect(@atom_feed.link).to be_a String
   end
+
+  it 'reuses a fetcher instead of making a new one' do
+    rss = RSSCache::Feed.new url: @rss_feed_url
+    fetcher_object_id_1 = rss.fetcher.object_id
+    rss.update
+    fetcher_object_id_2 = rss.fetcher.object_id
+    expect(fetcher_object_id_1).to eq(fetcher_object_id_2)
+  end
 end

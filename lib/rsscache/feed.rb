@@ -3,7 +3,7 @@ require 'rss'
 module RSSCache
   # An RSS feed
   class Feed
-    attr_reader :feed
+    attr_reader :feed, :fetcher
     attr_accessor :url
 
     def initialize(args = {})
@@ -26,8 +26,8 @@ module RSSCache
     end
 
     def update
-      f = RSSCache::Fetcher.new url: url
-      @feed = RSS::Parser.parse f.fetch
+      @fetcher ||= RSSCache::Fetcher.new url: url
+      @feed = RSS::Parser.parse @fetcher.fetch
     end
   end
 end
