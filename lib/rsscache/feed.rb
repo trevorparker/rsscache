@@ -28,6 +28,11 @@ module RSSCache
     def update
       @fetcher ||= RSSCache::Fetcher.new url: url
       @feed = RSS::Parser.parse @fetcher.fetch
+      unless @feed && %w{rss atom}.include?(@feed.feed_type)
+        fail FormatError, 'Unsupported feed format'
+      end
     end
+
+    FormatError = Class.new(StandardError)
   end
 end
