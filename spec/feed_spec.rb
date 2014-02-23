@@ -1,13 +1,6 @@
 require 'spec_helper'
 
 describe(RSSCache::Feed) do
-  before(:all) do
-    rss_feed_url = 'http://test.trevorparker.com/rss.xml'
-    atom_feed_url = 'https://github.com/trevorparker.atom'
-    @rss_feed = RSSCache::Feed.new url: rss_feed_url
-    @atom_feed = RSSCache::Feed.new url: atom_feed_url
-  end
-
   it 'can load an RSS feed' do
     expect(@rss_feed).to be_a RSSCache::Feed
   end
