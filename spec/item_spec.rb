@@ -37,4 +37,20 @@ describe(RSSCache::Feed::Item) do
   it %q{can provide an Atom item's link} do
     expect(@atom_items[0].link).to be_a String
   end
+
+  it %q{can provide an RSS item's published date} do
+    expect(@rss_items[0].published).to be_a Time
+  end
+
+  it %q{can provide an Atom item's published date} do
+    expect(@atom_items[0].published).to be_a Time
+  end
+
+  it %q{can provide an RSS item's updated date} do
+    expect(@rss_items[0].updated).to be_a Time
+  end
+
+  it %q{can provide an Atom item's updated date} do
+    expect(@atom_items[0].updated).to be_a Time
+  end
 end
