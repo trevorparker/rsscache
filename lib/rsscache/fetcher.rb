@@ -2,7 +2,7 @@ require 'open-uri'
 require 'time'
 
 module RSSCache
-  # Fetches an RSS feed
+  # Fetches an RSS or Atom feed
   class Fetcher
     attr_reader :content, :status, :last_modified, :etag, :rss
     attr_accessor :url

@@ -7,7 +7,6 @@ RSpec::Core::RakeTask.new(:spec)
 
 desc 'Validate against rubocop'
 Rubocop::RakeTask.new(:rubocop) do |task|
-  task.patterns = ['lib/*/*.rb', 'spec/']
   task.fail_on_error = true
 end
 

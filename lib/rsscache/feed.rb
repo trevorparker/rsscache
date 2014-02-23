@@ -1,7 +1,7 @@
 require 'rss'
 
 module RSSCache
-  # An RSS feed
+  # An RSS or Atom feed
   class Feed
     attr_reader :feed, :fetcher
     attr_accessor :url

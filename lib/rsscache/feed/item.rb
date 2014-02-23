@@ -1,5 +1,6 @@
 module RSSCache
   class Feed
+    # A single RSS or Atom item/entry
     class Item
       attr_reader :item, :type
 
