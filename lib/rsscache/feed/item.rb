@@ -9,6 +9,13 @@ module RSSCache
         @type ||= args[:type]
       end
 
+      def id
+        id = type == 'rss' ? item.guid.content : item.id.content
+        id || ''
+      end
+
+      alias_method :guid, :id
+
       def title
         title = type == 'rss' ? item.title : item.title.content
         title || ''
@@ -29,10 +36,19 @@ module RSSCache
         published ? published : nil
       end
 
+      alias_method :pubdate, :published
+
       def updated
         return published if type == 'rss'
         item.updated.content ? item.updated.content : nil
       end
+
+      def description
+        description = type == 'rss' ? item.description : item.summary
+        description || ''
+      end
+
+      alias_method :summary, :description
     end
   end
 end

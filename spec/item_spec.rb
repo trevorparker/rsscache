@@ -14,6 +14,14 @@ describe(RSSCache::Feed::Item) do
     expect(@atom_items[0]).to be_a RSSCache::Feed::Item
   end
 
+  it %q{can provide an RSS item's id} do
+    expect(@rss_items[0].id).to be_a String
+  end
+
+  it %q{can provide an Atom item's guid} do
+    expect(@atom_items[0].guid).to be_a String
+  end
+
   it %q{can provide an RSS item's title} do
     expect(@rss_items[0].title).to be_a String
   end
@@ -52,5 +60,13 @@ describe(RSSCache::Feed::Item) do
 
   it %q{can provide an Atom item's updated date} do
     expect(@atom_items[0].updated).to be_a Time
+  end
+
+  it %q{can provide an RSS item's description} do
+    expect(@rss_items[0].description).to be_a String
+  end
+
+  it %q{can provide an Atom item's summary} do
+    expect(@atom_items[0].summary).to be_a String
   end
 end
