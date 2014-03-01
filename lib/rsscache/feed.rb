@@ -4,7 +4,7 @@ module RSSCache
   # An RSS or Atom feed.
   class Feed
     # Returns the Feed content; one of RSS::Rss or RSS::Atom.
-    attr_reader :feed
+    attr_reader :content
 
     # Returns the RSSCache::Fetcher for the Feed.
     attr_reader :fetcher
@@ -26,8 +26,8 @@ module RSSCache
     # RSSCache::Feed::Item.
 
     def items
-      feed.items.map do |i|
-        RSSCache::Feed::Item.new item: i, type: feed.feed_type
+      content.items.map do |i|
+        RSSCache::Feed::Item.new item: i, type: content.feed_type
       end
     end
 
@@ -35,14 +35,15 @@ module RSSCache
     # Returns the Feed's link.
 
     def link
-      feed.feed_type == 'rss' ? feed.channel.link : feed.link.href
+      content.feed_type == 'rss' ? content.channel.link : content.link.href
     end
 
     ##
     # Returns the Feed's title.
 
     def title
-      feed.feed_type == 'rss' ? feed.channel.title : feed.title.content
+      return content.channel.title if content.feed_type == 'rss'
+      content.title.content
     end
 
     ##
@@ -50,8 +51,8 @@ module RSSCache
 
     def update
       @fetcher.fetch
-      @feed = RSS::Parser.parse @fetcher.content
-      unless @feed && %w{rss atom}.include?(@feed.feed_type)
+      @content = RSS::Parser.parse @fetcher.content
+      unless @content && %w{rss atom}.include?(@content.feed_type)
         fail FormatError, 'Unsupported feed format'
       end
     end
