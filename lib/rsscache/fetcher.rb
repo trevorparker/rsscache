@@ -4,7 +4,7 @@ require 'time'
 module RSSCache
   # Fetches an RSS or Atom feed
   class Fetcher
-    attr_reader :content, :status, :last_modified, :etag, :rss
+    attr_reader :content, :status, :last_modified, :etag
     attr_accessor :url
 
     def initialize(args = {})
