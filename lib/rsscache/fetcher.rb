@@ -12,17 +12,13 @@ module RSSCache
     end
 
     def fetch
-      begin
-        @content = open(url, request_headers) do |f|
-          parse_headers f
-          f.read
-        end
-      rescue OpenURI::HTTPError => e
-        @status = e.message[/^\d{3}/].to_i
-        (@content && @status == 304) ? (return @content) : (raise e)
+      @content = open(url, request_headers) do |f|
+        parse_headers f
+        f.read
       end
-
-      @content
+    rescue OpenURI::HTTPError => e
+      @status = e.message[/^\d{3}/].to_i
+      (@content && @status == 304) ? (return @content) : (raise e)
     end
 
     private

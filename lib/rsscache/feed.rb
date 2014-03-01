@@ -7,7 +7,8 @@ module RSSCache
     attr_accessor :url
 
     def initialize(args = {})
-      @url ||= args[:url]
+      @url     ||= args[:url]
+      @fetcher ||= RSSCache::Fetcher.new url: url
       update
     end
 
@@ -26,8 +27,8 @@ module RSSCache
     end
 
     def update
-      @fetcher ||= RSSCache::Fetcher.new url: url
-      @feed = RSS::Parser.parse @fetcher.fetch
+      @fetcher.fetch
+      @feed = RSS::Parser.parse @fetcher.content
       unless @feed && %w{rss atom}.include?(@feed.feed_type)
         fail FormatError, 'Unsupported feed format'
       end
