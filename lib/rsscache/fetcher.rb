@@ -2,14 +2,33 @@ require 'open-uri'
 require 'time'
 
 module RSSCache
-  # Fetches an RSS or Atom feed
+  # Fetches an RSS or Atom feed.
   class Fetcher
-    attr_reader :content, :status, :last_modified, :etag
+    # Returns the content of a Feed; one of RSS::Rss or RSS::Atom.
+    attr_reader :content
+
+    # Returns the HTTP status of the last request.
+    attr_reader :status
+
+    # Returns the `Last-Modified` response header received, if any.
+    attr_reader :last_modified
+
+    # Returns the `etag` response header recieved, if any.
+    attr_reader :etag
+
+    # Returns or sets the URL to fetch.
     attr_accessor :url
+
+    ##
+    # Creates a new instance of Fetcher.
 
     def initialize(args = {})
       @url ||= args[:url]
     end
+
+    ##
+    # Fetches the RSS or Atom URL and places the feed content in
+    # #content.
 
     def fetch
       @content = open(url, request_headers) do |f|
