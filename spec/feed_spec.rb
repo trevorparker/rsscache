@@ -33,7 +33,7 @@ describe(RSSCache::Feed) do
     expect(fetcher_object_id_1).to eq(fetcher_object_id_2)
   end
 
-  it 'raises RSSCache::Feed::FormatError on non-RSS and non-Atom feeds' do
+  it 'raises RSSCache::Feed::FormatError on unsupported feeds' do
     error = RSSCache::Feed::FormatError
     expect { RSSCache::Feed.new url: @xml_feed_url }.to raise_error(error)
   end
