@@ -11,19 +11,19 @@ module RSSCache
 
       def id
         id = type == 'rss' ? item.guid.content : item.id.content
-        id || ''
+        id ? id.strip : ''
       end
 
       alias_method :guid, :id
 
       def title
         title = type == 'rss' ? item.title : item.title.content
-        title || ''
+        title ? title.strip : ''
       end
 
       def author
         author = type == 'rss' ? item.author : item.author.name.content
-        author || ''
+        author ? author.strip : ''
       end
 
       def link

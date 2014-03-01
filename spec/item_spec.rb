@@ -18,24 +18,48 @@ describe(RSSCache::Feed::Item) do
     expect(@rss_items[0].id).to be_a String
   end
 
+  it %{strips leading and trailing whitespace from an RSS item's id} do
+    expect(@rss_items[0].id).to eq @rss_items[0].id.strip
+  end
+
   it %q{can provide an Atom item's guid} do
     expect(@atom_items[0].guid).to be_a String
+  end
+
+  it %{strips leading and trailing whitespace from an Atom item's guid} do
+    expect(@atom_items[0].guid).to eq @atom_items[0].guid.strip
   end
 
   it %q{can provide an RSS item's title} do
     expect(@rss_items[0].title).to be_a String
   end
 
+  it %{strips leading and trailing whitespace from an RSS item's title} do
+    expect(@rss_items[0].title).to eq @rss_items[0].title.strip
+  end
+
   it %q{can provide an Atom item's title} do
     expect(@atom_items[0].title).to be_a String
+  end
+
+  it %{strips leading and trailing whitespace from an Atom item's title} do
+    expect(@atom_items[0].title).to eq @atom_items[0].title.strip
   end
 
   it %q{can provide an RSS item's author} do
     expect(@rss_items[0].author).to be_a String
   end
 
+  it %{strips leading and trailing whitespace from an RSS item's author} do
+    expect(@rss_items[0].author).to eq @rss_items[0].author.strip
+  end
+
   it %q{can provide an Atom item's author} do
     expect(@atom_items[0].author).to be_a String
+  end
+
+  it %{strips leading and trailing whitespace from an Atom item's author} do
+    expect(@atom_items[0].author).to eq @atom_items[0].author.strip
   end
 
   it %q{can provide an RSS item's link} do
