@@ -6,7 +6,7 @@ describe(RSSCache::Feed) do
   end
 
   it 'can load an Atom feed' do
-    expect(@rss_feed).to be_a RSSCache::Feed
+    expect(@atom_feed).to be_a RSSCache::Feed
   end
 
   it %q{can provide an RSS feed's items} do
