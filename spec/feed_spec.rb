@@ -9,6 +9,16 @@ describe(RSSCache::Feed) do
     expect(@rss_feed).to be_a RSSCache::Feed
   end
 
+  it %q{can provide an RSS feed's items} do
+    expect(@rss_feed.items).to be_a Array
+    expect(@rss_feed.items[0]).to be_a RSSCache::Feed::Item
+  end
+
+  it %q{can provide an Atom feed's items} do
+    expect(@atom_feed.items).to be_a Array
+    expect(@atom_feed.items[0]).to be_a RSSCache::Feed::Item
+  end
+
   it %q{can provide an RSS feed's title} do
     expect(@rss_feed.title).to be_a String
   end
