@@ -1,0 +1,45 @@
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>atomtest</id>
+  <link type="application/atom+xml" rel="self" href="http://example.com/mock-atom.xml"/>
+  <title>Atom Test</title>
+  <updated>2014-03-06T19:45:07Z</updated>
+  <entry>
+    <id>http://example.com/the-first-atom-entry/</id>
+    <published>2009-10-27T16:36:08Z</published>
+    <updated>2009-10-27T16:36:08Z</updated>
+    <link type="text/html" rel="alternate" href="http://example.com/the-first-atom-entry/"/>
+    <title type="html">The First Atom Entry</title>
+    <author>
+      <name>Justin Example</name>
+      <uri>http://example.com/</uri>
+    </author>
+    <content type="html"><![CDATA[<p>Whee! A test!</p>]]></content>
+  </entry>
+  <entry>
+    <id>
+      http://example.com/a-second-atom-entry/
+    </id>
+    <published>
+      2013-12-23T14:18:09Z
+    </published>
+    <updated>
+      2013-12-23T14:18:09Z
+    </updated>
+    <link type="text/html" rel="alternate"
+      href="http://example.com/a-second-atom-entry/"/>
+    <title type="html">
+      A Second Atom Entry
+    </title>
+    <author>
+      <name>
+        Justin Example
+      </name>
+      <uri>
+        http://example.com/
+      </uri>
+    </author>
+    <content type="html">
+      <![CDATA[<p>Whee! Another test!</p>]]>
+    </content>
+  </entry>
+</feed>

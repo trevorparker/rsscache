@@ -1,0 +1,37 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>RSS Test</title>
+    <description>An RSS Test feed.</description>
+    <link>http://example.com/rss.xml</link>
+    <atom:link href="http://example.com/rss.xml" rel="self"
+      type="application/rss+xml"/>
+    <item>
+      <title>The First RSS Item</title>
+      <link>http://example.com/the-first-rss-item/</link>
+      <guid isPermaLink="true">http://example.com/a-test-item/</guid>
+      <comments>http://example.com/a-test-item/#comments</comments>
+      <pubDate>Tue, 27 Oct 2009 12:36:08 -0400</pubDate>
+      <description><![CDATA[<p>Whee! A test!</p>]]></description>
+    </item>
+    <item>
+      <title>
+        A Second RSS Item
+      </title>
+      <link>
+        http://example.com/a-second-rss-item/
+      </link>
+      <guid isPermaLink="true">
+        http://example.com/a-second-rss-item/
+      </guid>
+      <comments>
+        http://example.com/a-second-rss-item/#comments
+      </comments>
+      <pubDate>
+        Mon, 23 Dec 2013 09:18:09 -0500
+      </pubDate>
+      <description>
+        <![CDATA[<p>Whee! Another test!</p>]]>
+      </description>
+    </item>
+  </channel>
+</rss>
