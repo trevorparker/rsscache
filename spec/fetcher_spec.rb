@@ -16,17 +16,19 @@ describe(RSSCache::Fetcher) do
     expect(f.etag).to be_a String
   end
 
-  it 'can honor a 304 Not Modified response' do
+  it 'can send If-Modified-Since and honor a 304 Not Modified response' do
     f = RSSCache::Fetcher.new url: last_modified_feed_url
     2.times { f.fetch }
     expect(FakeWeb.last_request['If-Modified-Since']).to eq @mock_last_modified
     expect(f.status).to eq 304
+    expect(f.content).to be_a String
   end
 
-  it 'can honor a 304 Not Modified response' do
+  it 'can send If-None-Match and honor a 304 Not Modified response' do
     f = RSSCache::Fetcher.new url: etag_feed_url
     2.times { f.fetch }
     expect(FakeWeb.last_request['If-None-Match']).to eq @mock_etag
     expect(f.status).to eq 304
+    expect(f.content).to be_a String
   end
 end
