@@ -29,7 +29,7 @@ Eventually, other factors will weigh in on whether or not to do an HTTP request 
 
 The goal for any sort of aggressive caching at this level is to remove the need to think about *updating*. Rather, update operations will be interwoven with listing operations so that lazy-updating of feeds can happen.
 
-The ability to manually update or to forcefully refresh the cache will always be avaialble.
+The ability to manually update or to forcefully refresh the cache will always be available.
 
 License
 -------
