@@ -1,4 +1,4 @@
-require 'rss'
+require 'simple-rss'
 
 module RSSCache
   # An RSS or Atom feed.
@@ -27,7 +27,7 @@ module RSSCache
 
     def items
       content.items.map do |i|
-        RSSCache::Feed::Item.new item: i, type: content.feed_type
+        RSSCache::Feed::Item.new item: i
       end
     end
 
@@ -35,15 +35,14 @@ module RSSCache
     # Returns the Feed's link.
 
     def link
-      content.feed_type == 'rss' ? content.channel.link : content.link.href
+      content.channel.link
     end
 
     ##
     # Returns the Feed's title.
 
     def title
-      return content.channel.title if content.feed_type == 'rss'
-      content.title.content
+      content.channel.title
     end
 
     ##
@@ -51,12 +50,7 @@ module RSSCache
 
     def update
       @fetcher.fetch
-      @content = RSS::Parser.parse @fetcher.content
-      unless @content && %w{rss atom}.include?(@content.feed_type)
-        fail FormatError, 'Unsupported feed format'
-      end
+      @content = SimpleRSS.parse @fetcher.content
     end
-
-    FormatError = Class.new(StandardError)
   end
 end
