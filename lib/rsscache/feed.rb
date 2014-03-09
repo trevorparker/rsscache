@@ -35,14 +35,14 @@ module RSSCache
     # Returns the Feed's link.
 
     def link
-      content.channel.link
+      content.channel.link ? content.channel.link.strip : ''
     end
 
     ##
     # Returns the Feed's title.
 
     def title
-      content.channel.title
+      content.channel.title ? content.channel.title.strip : ''
     end
 
     ##
