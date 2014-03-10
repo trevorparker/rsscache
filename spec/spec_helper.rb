@@ -28,7 +28,7 @@ RSpec.configure do |config|
     FakeWeb.register_uri(
       :get, 'http://example.com/mock-atom.xml',
       body: mock_atom_feed,
-      'ETag' => @mock_etag
+      etag: @mock_etag
     )
     FakeWeb.register_uri(
       :get, 'http://example.com/sitemap.xml',
@@ -51,7 +51,7 @@ RSpec.configure do |config|
       [
         {
           body: mock_atom_feed,
-          'ETag' => @mock_etag
+          etag: @mock_etag
         },
         { status: ['304', 'Not Modified'] }
       ]
