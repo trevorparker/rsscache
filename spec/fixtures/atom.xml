@@ -1,7 +1,11 @@
-<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
   <id>atomtest</id>
   <link type="application/atom+xml" rel="self" href="http://example.com/mock-atom.xml"/>
+  <link href="http://example.com/"/>
   <title>Atom Test</title>
+  <subtitle>A test for Atom feeds.</subtitle>
   <updated>2014-03-06T19:45:07Z</updated>
   <entry>
     <id>http://example.com/the-first-atom-entry/</id>
