@@ -35,6 +35,19 @@ describe(RSSCache::Feed) do
     expect(@atom_feed.title).to eq @atom_feed.title.strip
   end
 
+  it %q{can provide empty string as an RSS feed's subtitle} do
+    expect(@rss_feed.subtitle).to be_a String
+    expect(@rss_feed.subtitle).to eq ''
+  end
+
+  it %q{can provide an Atom feed's subtitle} do
+    expect(@atom_feed.subtitle).to be_a String
+  end
+
+  it %{strips leading and trailing whitespace from an Atom feed's subtitle} do
+    expect(@atom_feed.subtitle).to eq @atom_feed.subtitle.strip
+  end
+
   it %q{can provide an RSS feed's link} do
     expect(@rss_feed.link).to be_a String
   end

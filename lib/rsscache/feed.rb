@@ -46,6 +46,12 @@ module RSSCache
     end
 
     ##
+    # Returns the Feed's subtitle.
+    def subtitle
+      content.channel.subtitle ? content.channel.subtitle.strip : ''
+    end
+
+    ##
     # Updates the Feed.
 
     def update
