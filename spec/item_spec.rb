@@ -94,6 +94,23 @@ describe(RSSCache::Feed::Item) do
     expect(@atom_items[0].summary).to be_a String
   end
 
+  it %q{can provide an RSS item's description as contents} do
+    expect(@rss_items[0].contents).to be_a String
+    expect(@rss_items[0].contents).to eq @rss_items[0].description
+  end
+
+  it %{strips leading and trailing whitespace from an RSS item's contents} do
+    expect(@rss_items[0].contents).to eq @rss_items[0].contents.strip
+  end
+
+  it %q{can provide an Atom item's contents} do
+    expect(@atom_items[0].contents).to be_a String
+  end
+
+  it %{strips leading and trailing whitespace from an Atom item's contents} do
+    expect(@atom_items[0].contents).to eq @atom_items[0].contents.strip
+  end
+
   it %q{can provide an RSS feed's comments link} do
     expect(@rss_items[0].comments).to be_a String
   end

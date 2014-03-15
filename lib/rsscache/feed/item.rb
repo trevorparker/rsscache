@@ -70,6 +70,13 @@ module RSSCache
       alias_method :summary, :description
 
       ##
+      # Returns the Item's contents.
+
+      def contents
+        item.contents ? item.contents.strip : description
+      end
+
+      ##
       # Returns the Item's comments link.
 
       def comments
