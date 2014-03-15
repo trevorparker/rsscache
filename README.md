@@ -8,7 +8,7 @@ Usage
 
 The most direct way to use rsscache is by loading up an RSS or Atom feed:
 
-```
+```ruby
 require 'rsscache'
 url = 'https://github.com/trevorparker/rsscache/commits/master.atom'
 feed = RSSCache::Feed.new url: url
