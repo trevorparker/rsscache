@@ -6,7 +6,7 @@ desc 'RSSCache spec'
 RSpec::Core::RakeTask.new(:spec)
 
 desc 'Validate against rubocop'
-Rubocop::RakeTask.new(:rubocop) do |task|
+RuboCop::RakeTask.new(:rubocop) do |task|
   task.fail_on_error = true
 end
 

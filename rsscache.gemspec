@@ -8,14 +8,14 @@ Gem::Specification.new do |spec|
   spec.version       = RSSCache::Version::STRING
   spec.authors       = ['Trevor Parker']
   spec.email         = ['trevor@trevorparker.com']
-  spec.summary       = %q{An RSS fetching and caching library.}
+  spec.summary       = 'An RSS fetching and caching library.'
   spec.description   = ''
   spec.homepage      = 'https://github.com/trevorparker/rsscache'
   spec.license       = 'Modified BSD'
 
   spec.files         = `git ls-files -z`.split("\x0")
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.executables   = spec.files.grep('^bin/') { |f| File.basename(f) }
+  spec.test_files    = spec.files.grep('^(test|spec|features)/')
   spec.require_paths = ['lib']
 
   spec.add_dependency 'simple-rss'

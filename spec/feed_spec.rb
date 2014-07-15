@@ -9,58 +9,58 @@ describe(RSSCache::Feed) do
     expect(@atom_feed).to be_a RSSCache::Feed
   end
 
-  it %q{can provide an RSS feed's items} do
+  it "can provide an RSS feed's items" do
     expect(@rss_feed.items).to be_a Array
     expect(@rss_feed.items[0]).to be_a RSSCache::Feed::Item
   end
 
-  it %q{can provide an Atom feed's items} do
+  it "can provide an Atom feed's items" do
     expect(@atom_feed.items).to be_a Array
     expect(@atom_feed.items[0]).to be_a RSSCache::Feed::Item
   end
 
-  it %q{can provide an RSS feed's title} do
+  it "can provide an RSS feed's title" do
     expect(@rss_feed.title).to be_a String
   end
 
-  it %{strips leading and trailing whitespace from an RSS feed's title} do
+  it "strips leading and trailing whitespace from an RSS feed's title" do
     expect(@rss_feed.title).to eq @rss_feed.title.strip
   end
 
-  it %q{can provide an Atom feed's title} do
+  it "can provide an Atom feed's title" do
     expect(@atom_feed.title).to be_a String
   end
 
-  it %{strips leading and trailing whitespace from an Atom feed's title} do
+  it "strips leading and trailing whitespace from an Atom feed's title" do
     expect(@atom_feed.title).to eq @atom_feed.title.strip
   end
 
-  it %q{can provide empty string as an RSS feed's subtitle} do
+  it "can provide empty string as an RSS feed's subtitle" do
     expect(@rss_feed.subtitle).to be_a String
     expect(@rss_feed.subtitle).to eq ''
   end
 
-  it %q{can provide an Atom feed's subtitle} do
+  it "can provide an Atom feed's subtitle" do
     expect(@atom_feed.subtitle).to be_a String
   end
 
-  it %{strips leading and trailing whitespace from an Atom feed's subtitle} do
+  it "strips leading and trailing whitespace from an Atom feed's subtitle" do
     expect(@atom_feed.subtitle).to eq @atom_feed.subtitle.strip
   end
 
-  it %q{can provide an RSS feed's link} do
+  it "can provide an RSS feed's link" do
     expect(@rss_feed.link).to be_a String
   end
 
-  it %{strips leading and trailing whitespace from an RSS feed's link} do
+  it "strips leading and trailing whitespace from an RSS feed's link" do
     expect(@rss_feed.link).to eq @rss_feed.link.strip
   end
 
-  it %q{can provide an Atom feed's link} do
+  it "can provide an Atom feed's link" do
     expect(@atom_feed.link).to be_a String
   end
 
-  it %{strips leading and trailing whitespace from an Atom feed's link} do
+  it "strips leading and trailing whitespace from an Atom feed's link" do
     expect(@atom_feed.link).to eq @atom_feed.link.strip
   end
 
