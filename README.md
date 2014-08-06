@@ -1,6 +1,8 @@
 rsscache
 ========
 
+[![Build Status](http://img.shields.io/travis/trevorparker/rsscache.svg)](https://travis-ci.org/trevorparker/rsscache)
+
 An RSS fetching and caching library.
 
 Usage
