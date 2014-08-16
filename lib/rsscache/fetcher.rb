@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'open_uri_redirections'
 require 'time'
 
 module RSSCache
@@ -52,6 +53,7 @@ module RSSCache
       h = { 'User-Agent' => RSSCache::UserAgent::STRING }
       h['If-None-Match'] = @etag if @etag
       h['If-Modified-Since'] = @last_modified if @last_modified
+      h[:allow_redirections] = :safe
 
       h
     end

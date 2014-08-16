@@ -31,4 +31,13 @@ describe(RSSCache::Fetcher) do
     expect(f.status).to eq 304
     expect(f.content).to be_a String
   end
+
+  [301, 302, 303, 307].each do |r|
+    it "can follow #{r} redirects" do
+      f = RSSCache::Fetcher.new url: @redirect_url_for.call(r)
+      f.fetch
+      expect(f.status).to eq 200
+      expect(f.content).to be_a String
+    end
+  end
 end

@@ -19,6 +19,8 @@ RSpec.configure do |config|
       File.join(File.dirname(__FILE__), 'fixtures', 'sitemap.xml')
     )
 
+    FakeWeb.allow_net_connect = false
+
     FakeWeb.register_uri(
       :get, 'http://example.com/mock-rss.xml',
       body: mock_rss_feed,
@@ -55,9 +57,56 @@ RSpec.configure do |config|
         { status: ['304', 'Not Modified'] }
       ]
     )
+
     @rss_feed_url  = 'http://example.com/mock-rss.xml'
     @atom_feed_url = 'http://example.com/mock-atom.xml'
     @xml_feed_url  = 'http://example.com/sitemap.xml'
+
+    FakeWeb.register_uri(
+      :get, 'http://example.com/mock-301.xml',
+      [
+        {
+          status: ['301', 'Moved Permanently'],
+          location: @rss_feed_url
+        }
+      ]
+    )
+
+    # rubocop:disable Style/WordArray
+    FakeWeb.register_uri(
+      :get, 'http://example.com/mock-302.xml',
+      [
+        {
+          status: ['302', 'Found'],
+          location: @rss_feed_url
+        }
+      ]
+    )
+    # rubocop:enable Style/WordArray
+
+    FakeWeb.register_uri(
+      :get, 'http://example.com/mock-303.xml',
+      [
+        {
+          status: ['303', 'See Other'],
+          location: @rss_feed_url
+        }
+      ]
+    )
+
+    FakeWeb.register_uri(
+      :get, 'http://example.com/mock-307.xml',
+      [
+        {
+          status: ['307', 'Temporary Redirect'],
+          location: @rss_feed_url
+        }
+      ]
+    )
+
+    @redirect_url_for = lambda do |c|
+      "http://example.com/mock-#{c}.xml"
+    end
 
     @rss_feed = RSSCache::Feed.new url: @rss_feed_url
     @atom_feed = RSSCache::Feed.new url: @atom_feed_url
