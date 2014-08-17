@@ -3,6 +3,10 @@ require 'simple-rss'
 module RSSCache
   # An RSS or Atom feed.
   class Feed
+    # Maximum number of seconds an update will return a
+    # cached response.
+    MAX_STALENESS = 900
+
     # Returns the Feed content; one of RSS::Rss or RSS::Atom.
     attr_reader :content
 
@@ -18,7 +22,7 @@ module RSSCache
     def initialize(args = {})
       @url     ||= args[:url]
       @fetcher ||= RSSCache::Fetcher.new url: url
-      update
+      update(true)
     end
 
     ##
@@ -53,11 +57,22 @@ module RSSCache
     end
 
     ##
+    # Returns the Feed's staleness.
+
+    def staleness
+      Time.now - @last_fetched
+    end
+
+    ##
     # Updates the Feed.
 
-    def update
-      @fetcher.fetch
-      @content = SimpleRSS.parse @fetcher.content
+    def update(force = false)
+      if force || staleness > MAX_STALENESS
+        @fetcher.fetch
+        @content = SimpleRSS.parse @fetcher.content
+        @last_fetched = Time.now
+      end
+      true
     end
   end
 end
